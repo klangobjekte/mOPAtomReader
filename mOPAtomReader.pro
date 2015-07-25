@@ -60,9 +60,6 @@ macx{
             #-lwritearchivemxf-1.0 \
             #-lmxfreader-1.0 \
             #-lwriteavidmxf-1.0 \
-
-
-
 }
 
 # Input
@@ -74,8 +71,6 @@ HEADERS += FixedSizeEssenceParser.h \
            PCMEssenceParser.h \
            RawEssenceParser.h \
            VariableSizeEssenceParser.h \
-           ../Common/DynamicByteArray.h \
-           ../Common/CommonTypes.h
 SOURCES += FixedSizeEssenceParser.cpp \
            FrameOffsetIndexTable.cpp \
            OPAtomClipReader.cpp \
@@ -85,4 +80,6 @@ SOURCES += FixedSizeEssenceParser.cpp \
            RawEssenceParser.cpp \
            test_opatomreader.cpp \
            VariableSizeEssenceParser.cpp \
-           ../Common/DynamicByteArray.cpp
+           ../Common/DynamicByteArray.cpp \
+    Common/CommonTypes.h \
+    Common/DynamicByteArray.h
