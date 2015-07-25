@@ -8,7 +8,6 @@ TEMPLATE = lib
 
 CONFIG += plugin
 CONFIG += dll
-
 #CONFIG += staticlib #static
 
 #TARGET = /usr/local/bin/mOPAtomreader
@@ -21,45 +20,16 @@ CONFIG -= QtCore
 CONFIG -= app_bundle
 CONFIG   += console
 CONFIG += c++11
-#contains(TEMPLATE, app) {
-#    contains(CONFIG, staticlib) {
-#        CONFIG -= hide_symbols
-#        CONFIG -= staticlib
-#        CONFIG += rpath
-#        QMAKE_CXXFLAGS -= $$QMAKE_CXXFLAGS_HIDESYMS
-#        QMAKE_CFLAGS -= $$QMAKE_CFLAGS_HIDESYMS
-#        QMAKE_LFLAGS -= $$QMAKE_LFLAGS_HIDESYMS
-#        QMAKE_OBJECTIVE_CFLAGS -= $$QMAKE_OBJECTIVE_CFLAGS_HIDESYMS
-#        DESTDIR = $${ROOT_BUILD_DIR}/lib
-#
-        # Ensure the install-name of the libraries are correct on Mac OS
-#        macx: QMAKE_LFLAGS_SONAME = $$QMAKE_LFLAGS_SONAME$${DESTDIR}/
-#    }
-#}
 
 macx{
-
     #CONFIG += macx-xcode
     INCLUDEPATH += .\
                 /usr/local/include \
                 /usr/local/include/libMXF++-1.0/ \
                 /usr/local/include/libMXF-1.0
-
     LIBS += -L/usr/local/lib
-    #LIBS += /usr/local/lib/libMXF++/libMXF++-1.0.la
-
     LIBS += -lMXF-1.0 \
             -lMXF++-1.0
-            #-lbmx-0.1 \
-            #-lopatomreader-1.0 \
-            #-ld10mxfop1awriter-1.0 \
-
-            #-lexpat \
-            #-luriparser \
-            #-lavidmxfinfo-1.0 \
-            #-lwritearchivemxf-1.0 \
-            #-lmxfreader-1.0 \
-            #-lwriteavidmxf-1.0 \
 }
 
 # Input
