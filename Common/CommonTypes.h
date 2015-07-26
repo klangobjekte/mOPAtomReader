@@ -34,13 +34,25 @@
 
 
 #include <mxf/mxf_types.h>
-
+#include <string>
+using namespace std;
+#ifdef _WIN32
+typedef std::wstring  psnd_string;
+#else
+typedef std::string  psnd_string;
+#endif
 
 
 class Timecode
 {
 public:
-    Timecode() : hour(0), min(0), sec(0), frame(0), dropFrame(false) {}
+    Timecode()
+        : hour(0),
+        min(0),
+        sec(0),
+        frame(0),
+        dropFrame(false)
+        {}
     Timecode(bool invalid)
     : hour(0), min(0), sec(0), frame(0), dropFrame(false)
     {

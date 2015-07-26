@@ -5,23 +5,43 @@ QT       -= gui
 QT       -= core
 #TEMPLATE = app
 TEMPLATE = lib
+CONFIG += staticlib #static
 
-CONFIG += plugin
-CONFIG += dll
-#CONFIG += staticlib #static
-
-#TARGET = /usr/local/bin/mOPAtomreader
-TARGET = /usr/local/lib/mOPAtomreader
-DEPENDPATH += . \
-    ../Common
-
-INCLUDEPATH += .
-CONFIG -= QtCore
+#CONFIG -= QtCore
 CONFIG -= app_bundle
 CONFIG   += console
-CONFIG += c++11
+#CONFIG += c++11
+
+#DEFINES = __STDC_CONSTANT_MACROS
+
+#INCLUDEPATH += .
+
+win32{
+    TARGET = mOPAtomreader
+    INCLUDEPATH += "C:/bmx_build/msvc_build/libMXF++/include"
+    INCLUDEPATH += "C:/bmx_build/msvc_build/libMXF/include"
+
+    LIBS += "C:\bmx_build\msvc_build\libMXF\debug\lib/libMXF.lib"
+    LIBS +=  "C:\bmx_build\msvc_build\libMXF++\debug\lib/libMXF++.lib"
+    #LIBS += "C:\bmx_build\msvc_build\expat\debug\lib/libexpat.dll"
+    #LIBS += "C:\bmx_build\msvc_build\uriparser\debug\lib/uriparser.lib"
+
+    DEFINES += _USING_V110_SDK71_
+
+    INCLUDEPATH += "C:/Program Files/Microsoft SDKs/Windows/v7.1A/include"
+    LIBS += -lole32
+    #LIBS += "C:/Program Files/Microsoft SDKs/Windows/v7.1A/Lib/Mfplat.lib"
+    #LIBS += "C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib\mfreadwrite.lib"
+    #LIBS += "C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib\mfuuid.lib"
+
+}
 
 macx{
+CONFIG += plugin
+CONFIG += dll
+
+    #TARGET = /usr/local/bin/mOPAtomreader
+    TARGET = /usr/local/lib/mOPAtomreader
     #CONFIG += macx-xcode
     INCLUDEPATH += .\
                 /usr/local/include \
@@ -32,6 +52,9 @@ macx{
             -lMXF++-1.0
 }
 
+include(deployment.pri)
+qtcAddDeployment()
+
 # Input
 HEADERS += FixedSizeEssenceParser.h \
            FrameOffsetIndexTable.h \
@@ -41,15 +64,18 @@ HEADERS += FixedSizeEssenceParser.h \
            PCMEssenceParser.h \
            RawEssenceParser.h \
            VariableSizeEssenceParser.h \
-SOURCES += FixedSizeEssenceParser.cpp \
-           FrameOffsetIndexTable.cpp \
-           OPAtomClipReader.cpp \
-           OPAtomContentPackage.cpp \
-           OPAtomTrackReader.cpp \
-           PCMEssenceParser.cpp \
-           RawEssenceParser.cpp \
-           test_opatomreader.cpp \
-           VariableSizeEssenceParser.cpp \
-           ../Common/DynamicByteArray.cpp \
-    Common/CommonTypes.h \
-    Common/DynamicByteArray.h
+SOURCES += \
+           Common/CommonTypes.h \
+           Common/DynamicByteArray.h
+
+SOURCES += \
+    main.cpp \
+    FixedSizeEssenceParser.cpp \
+    FrameOffsetIndexTable.cpp \
+    OPAtomClipReader.cpp \
+    OPAtomContentPackage.cpp \
+    OPAtomTrackReader.cpp \
+    PCMEssenceParser.cpp \
+    RawEssenceParser.cpp \
+    VariableSizeEssenceParser.cpp \
+    Common/DynamicByteArray.cpp

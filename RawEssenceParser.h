@@ -36,7 +36,7 @@
 
 #include <vector>
 
-#include "../Common/DynamicByteArray.h"
+#include "./Common/DynamicByteArray.h"
 #include "FrameOffsetIndexTable.h"
 
 namespace mxfpp

@@ -37,7 +37,7 @@
 #include <map>
 #include <vector>
 
-#include "../Common/DynamicByteArray.h"
+#include "./Common/DynamicByteArray.h"
 
 
 class OPAtomClipReader;

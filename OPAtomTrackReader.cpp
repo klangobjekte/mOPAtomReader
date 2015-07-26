@@ -65,7 +65,7 @@ const char * const ERROR_STRINGS[] =
 
 
 
-OPAtomOpenResult OPAtomTrackReader::Open(std::string filename, OPAtomTrackReader **track_reader)
+OPAtomOpenResult OPAtomTrackReader::Open(string filename, OPAtomTrackReader **track_reader)
 {
     File *file = 0;
 
@@ -75,6 +75,7 @@ OPAtomOpenResult OPAtomTrackReader::Open(std::string filename, OPAtomTrackReader
         try
         {
             file = File::openRead(filename);
+
         }
         catch (...)
         {
@@ -135,7 +136,11 @@ OPAtomTrackReader::OPAtomTrackReader(string filename, File *file)
     {
         int64_t essence_length = 0;
         mxfUL essence_label = g_Null_UL;
-        mxfRational edit_rate = (mxfRational){0, 1};
+#ifdef _WIN32
+mxfRational edit_rate = {0, 1};
+#else
+mxfRational edit_rate = (mxfRational){0, 1};
+#endif
         FileDescriptor *file_descriptor = 0;
         uint32_t frame_size = 0;
         mxfKey key;

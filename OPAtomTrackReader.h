@@ -63,7 +63,7 @@ typedef enum
 class OPAtomTrackReader
 {
 public:
-    static OPAtomOpenResult Open(std::string filename, OPAtomTrackReader **track_reader);
+    static OPAtomOpenResult Open(string filename, OPAtomTrackReader **track_reader);
     static std::string ErrorToString(OPAtomOpenResult result);
 
 public:

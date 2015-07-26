@@ -127,7 +127,11 @@ RawEssenceParser* RawEssenceParser::Create(File *file,
                 case PCM_PARSER:
                 {
                     // TODO: edit rate passed in should be the video edit rate
+                    #ifdef _WIN32
+                    mxfRational edit_rate = {25, 1};
+#else
                     mxfRational edit_rate = (mxfRational){25, 1};
+#endif
                     return new PCMEssenceParser(file,
                                                 essence_length,
                                                 essence_label,

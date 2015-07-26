@@ -36,7 +36,7 @@
 #endif
 
 #include <libMXF++/MXF.h>
-
+#include "Common/CommonTypes.h"
 #include "OPAtomClipReader.h"
 #include <iostream>
 using namespace std;
@@ -66,14 +66,14 @@ OPAtomClipReader::~OPAtomClipReader()
         delete mTrackReaders[i];
 }
 
-pair<OPAtomOpenResult, string> OPAtomClipReader::Open(const vector<std::string> &track_filenames,
+std::pair<OPAtomOpenResult, string> OPAtomClipReader::Open(const vector<string> &track_filenames,
                                                       OPAtomClipReader **clip_reader)
 {
     MXFPP_ASSERT(!track_filenames.empty());
     cout << "OPAtomClipReader" << endl;
 
     vector<OPAtomTrackReader*> track_readers;
-    string filename;
+   string filename;
     try
     {
         OPAtomOpenResult result;
