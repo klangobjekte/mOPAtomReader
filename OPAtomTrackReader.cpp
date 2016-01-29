@@ -180,8 +180,11 @@ mxfRational edit_rate = (mxfRational){0, 1};
             if (!fsp || !fsp->haveDescriptor())
                 continue;
 
-            file_descriptor = dynamic_cast<FileDescriptor*>(fsp->getDescriptor());
-            cout << "file_descriptor->getSampleRate() " << file_descriptor->getSampleRate().numerator << endl;
+            else{
+                file_descriptor = dynamic_cast<FileDescriptor*>(fsp->getDescriptor());
+                //! leads to crash:
+                //cout << "file_descriptor->getSampleRate() " << file_descriptor->getSampleRate().numerator << endl;
+            }
             if (file_descriptor)
                 break;
         }

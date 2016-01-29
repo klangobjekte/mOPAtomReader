@@ -54,7 +54,7 @@ public:
     int64_t GetDuration();
     int64_t DetermineDuration();
     int64_t GetPosition();
-   const  mxfpp::GenericSoundEssenceDescriptor *getFile_descriptor();
+    const  mxfpp::GenericSoundEssenceDescriptor *getFile_descriptor();
 
     const OPAtomContentPackage* Read();
 

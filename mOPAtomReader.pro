@@ -5,16 +5,22 @@ QT       -= gui
 QT       -= core
 #TEMPLATE = app
 TEMPLATE = lib
-CONFIG += staticlib #static
+#CONFIG += staticlib #static
 
-#CONFIG -= QtCore
+CONFIG += plugin
+CONFIG += dll
+
+INCLUDEPATH += .
+CONFIG -= QtCore
 CONFIG -= app_bundle
 CONFIG   += console
-#CONFIG += c++11
+CONFIG += c++11
+DEPENDPATH += . \
+    Common
 
 #DEFINES = __STDC_CONSTANT_MACROS
 
-#INCLUDEPATH += .
+INCLUDEPATH += .
 
 win32{
     TARGET = mOPAtomreader
@@ -37,23 +43,33 @@ win32{
 }
 
 macx{
-CONFIG += plugin
-CONFIG += dll
-
-    #TARGET = /usr/local/bin/mOPAtomreader
-    TARGET = /usr/local/lib/mOPAtomreader
+TARGET = /usr/local/lib/mOPAtomreader
+    #CONFIG += plugin
     #CONFIG += macx-xcode
     INCLUDEPATH += .\
                 /usr/local/include \
                 /usr/local/include/libMXF++-1.0/ \
                 /usr/local/include/libMXF-1.0
+
     LIBS += -L/usr/local/lib
+    #LIBS += /usr/local/lib/libMXF++/libMXF++-1.0.la
+
     LIBS += -lMXF-1.0 \
             -lMXF++-1.0
+            #-lbmx-0.1 \
+            #-lopatomreader-1.0 \
+            #-ld10mxfop1awriter-1.0 \
+
+            #-lexpat \
+            #-luriparser \
+            #-lavidmxfinfo-1.0 \
+            #-lwritearchivemxf-1.0 \
+            #-lmxfreader-1.0 \
+            #-lwriteavidmxf-1.0 \
 }
 
-include(deployment.pri)
-qtcAddDeployment()
+#include(deployment.pri)
+#qtcAddDeployment()
 
 # Input
 HEADERS += FixedSizeEssenceParser.h \
@@ -64,7 +80,6 @@ HEADERS += FixedSizeEssenceParser.h \
            PCMEssenceParser.h \
            RawEssenceParser.h \
            VariableSizeEssenceParser.h \
-SOURCES += \
            Common/CommonTypes.h \
            Common/DynamicByteArray.h
 
