@@ -19,6 +19,15 @@ then
 echo "mkdir /usr/local/include/mOPAtomReader"
 mkdir /usr/local/include/mOPAtomReader
 fi
+
+if ! test -e /usr/local/include/mOPAtomReader/Common
+then
+echo "mkdir /usr/local/include/mOPAtomReader/Common"
+mkdir /usr/local/include/mOPAtomReader/Common
+fi
+
+
+
 echo "cp -f $SOURCEPATH/FixedSizeEssenceParser.h /usr/local/include/mOPAtomReader/"
 cp -f $SOURCEPATH/FixedSizeEssenceParser.h /usr/local/include/mOPAtomReader/
 
@@ -42,3 +51,9 @@ cp -f $SOURCEPATH/RawEssenceParser.h /usr/local/include/mOPAtomReader/
 
 echo "cp -f $SOURCEPATH/VariableSizeEssenceParser.h /usr/local/include/mOPAtomReader/"
 cp -f $SOURCEPATH/VariableSizeEssenceParser.h /usr/local/include/mOPAtomReader/
+
+echo "cp -f $SOURCEPATH/Common/CommonTypes.h /usr/local/include/mOPAtomReader/Common/"
+cp -f $SOURCEPATH/Common/CommonTypes.h /usr/local/include/mOPAtomReader/Common/
+
+echo "cp -f $SOURCEPATH/Common/DynamicByteArray.h /usr/local/include/mOPAtomReader/Common/"
+cp -f $SOURCEPATH/Common/DynamicByteArray.h /usr/local/include/mOPAtomReader/Common/
