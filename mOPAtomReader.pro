@@ -94,3 +94,7 @@ SOURCES += \
     RawEssenceParser.cpp \
     VariableSizeEssenceParser.cpp \
     Common/DynamicByteArray.cpp
+
+DISTFILES += \
+    mOPAtomReader.graffle \
+    deploy.sh

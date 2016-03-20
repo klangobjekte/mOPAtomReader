@@ -43,7 +43,7 @@
 
 using namespace std;
 using namespace mxfpp;
-
+#define _IGNORE_ONLY_SUPPORT_48KHZ
 
 
 PCMEssenceParser::PCMEssenceParser(File *file, int64_t essence_length,
@@ -67,8 +67,10 @@ PCMEssenceParser::PCMEssenceParser(File *file, int64_t essence_length,
     if (sound_descriptor->haveAudioSamplingRate()) {
         mxfRational sampling_rate = sound_descriptor->getAudioSamplingRate();
         cout << "sampling_rate " << sampling_rate.numerator << endl;
+#ifndef _IGNORE_ONLY_SUPPORT_48KHZ
         // only support 48kHz
-        //MXFPP_ASSERT(sampling_rate.numerator == 48000 && sampling_rate.denominator == 1);
+        MXFPP_ASSERT(sampling_rate.numerator == 48000 && sampling_rate.denominator == 1);
+#endif
     }
 
     if (!sound_descriptor->haveQuantizationBits())
