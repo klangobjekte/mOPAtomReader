@@ -121,7 +121,10 @@ RawEssenceParser* RawEssenceParser::Create(File *file,
                     fixed_frame_size = SUPPORTED_FORMATS[i].fixed_frame_size;
                     if (fixed_frame_size == 0)
                         fixed_frame_size = frame_size;
-                    return new FixedSizeEssenceParser(file, essence_length, essence_label, file_descriptor,
+                    return new FixedSizeEssenceParser(file,
+                                                      essence_length,
+                                                      essence_label,
+                                                      file_descriptor,
                                                       fixed_frame_size);
                 }
                 case PCM_PARSER:

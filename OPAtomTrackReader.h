@@ -67,7 +67,7 @@ public:
     static std::string ErrorToString(OPAtomOpenResult result);
 
 public:
-    ~OPAtomTrackReader();
+    virtual ~OPAtomTrackReader();
 
     std::string GetFilename() const { return mFilename; }
     mxfpp::HeaderMetadata* GetHeaderMetadata() const { return mHeaderMetadata; }
@@ -86,11 +86,12 @@ public:
     bool IsEOF();
 
 private:
+    //! Private Konstruktor
     OPAtomTrackReader(std::string filename, mxfpp::File *mxf_file);
 
 private:
     std::string mFilename;
-     mxfpp::GenericSoundEssenceDescriptor *mFileDescriptor;
+    //mxfpp::GenericSoundEssenceDescriptor *mFileDescriptor;
     uint32_t mTrackId;
     int64_t mDurationInMetadata;
     bool mIsPicture;

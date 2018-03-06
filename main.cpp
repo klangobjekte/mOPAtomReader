@@ -46,8 +46,9 @@
 using namespace std;
 using namespace mxfpp;
 
-
+#ifdef _WIN32
 #include <cstdint>
+#endif
 
 typedef uint8_t  CHAR;
 typedef uint16_t WORD;
@@ -87,8 +88,12 @@ struct WWMFPcmFormat {
         validBitsPerSample = 0;
     }
 
-    WWMFPcmFormat(WWMFBitFormatType aSampleFormat, WORD aNChannels, WORD aBits,
-            DWORD aSampleRate, DWORD aDwChannelMask, WORD aValidBitsPerSample) {
+    WWMFPcmFormat(WWMFBitFormatType aSampleFormat,
+                  WORD aNChannels,
+                  WORD aBits,
+                  DWORD aSampleRate,
+                  DWORD aDwChannelMask,
+                  WORD aValidBitsPerSample) {
         sampleFormat       = aSampleFormat;
         nChannels          = aNChannels;
         bits               = aBits;
@@ -110,7 +115,7 @@ struct WWMFPcmFormat {
 
 static int WriteBytes(FILE *fpw, const char *s, DWORD bytes)
 {
-    int writeBytes = 0;
+    DWORD writeBytes = 0;
 
     writeBytes = fwrite(s, 1, bytes, fpw);
     if (bytes != writeBytes) {
@@ -235,20 +240,20 @@ int main(int argc, const char **argv)
 
 
 
-     Preface *preface = reader->GetHeaderMetadata()->getPreface();
-     preface->getInstanceUID();
-     if (preface->haveGenerationUID())
-     {
-         preface->getGenerationUID();
-     }
-     printf("Preface::Version = %u\n", preface->getVersion());
-     printf("size Preface::Identifications = %d\n", (int)preface->getIdentifications().size());
-     printf("size Preface::EssenceContainers = %d\n", (int)preface->getEssenceContainers().size());
-     if (preface->getIdentifications().size() > 0)
-     {
-         Identification *identification = *preface->getIdentifications().begin();
-         printf("Identification::CompanyName = '%s'\n", identification->getCompanyName().c_str());
-     }
+    Preface *preface = reader->GetHeaderMetadata()->getPreface();
+    preface->getInstanceUID();
+    if (preface->haveGenerationUID())
+    {
+        preface->getGenerationUID();
+    }
+    printf("Preface::Version = %u\n", preface->getVersion());
+    printf("size Preface::Identifications = %d\n", (int)preface->getIdentifications().size());
+    printf("size Preface::EssenceContainers = %d\n", (int)preface->getEssenceContainers().size());
+    if (preface->getIdentifications().size() > 0)
+    {
+        Identification *identification = *preface->getIdentifications().begin();
+        printf("Identification::CompanyName = '%s'\n", identification->getCompanyName().c_str());
+    }
 
 
     FILE *output = fopen("/Users/admin/Music/mxf_Avid/test.wav", "wb");

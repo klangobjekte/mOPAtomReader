@@ -72,7 +72,7 @@ std::pair<OPAtomOpenResult, string> OPAtomClipReader::Open(const vector<string> 
     MXFPP_ASSERT(!track_filenames.empty());
     cout << "OPAtomClipReader" << endl;
 
-    vector<OPAtomTrackReader*> track_readers;
+   vector<OPAtomTrackReader*> track_readers;
    string filename;
     try
     {
