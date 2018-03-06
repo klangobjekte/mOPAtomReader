@@ -69,6 +69,9 @@ PCMEssenceParser::PCMEssenceParser(File *file, int64_t essence_length,
         cout << "sampling_rate " << sampling_rate.numerator << endl;
         // only support 48kHz
         //MXFPP_ASSERT(sampling_rate.numerator == 48000 && sampling_rate.denominator == 1);
+        if(!sampling_rate.numerator == 48000 || !sampling_rate.denominator == 1){
+            throw MXFException("Samplerate not supported!");
+        }
     }
 
     if (!sound_descriptor->haveQuantizationBits())
