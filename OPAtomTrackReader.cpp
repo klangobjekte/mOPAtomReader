@@ -181,7 +181,7 @@ mxfRational edit_rate = (mxfRational){0, 1};
                 continue;
 
             file_descriptor = dynamic_cast<FileDescriptor*>(fsp->getDescriptor());
-            cout << "file_descriptor->getSampleRate() " << file_descriptor->getSampleRate().numerator << endl;
+            //cout << "file_descriptor->getSampleRate() " << file_descriptor->getSampleRate().numerator << endl;
             if (file_descriptor)
                 break;
         }

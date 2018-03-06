@@ -37,9 +37,9 @@
 #include <string>
 using namespace std;
 #ifdef _WIN32
-typedef std::wstring  psnd_string;
+//typedef std::wstring  psnd_string;
 #else
-typedef std::string  psnd_string;
+//typedef std::string  psnd_string;
 #endif
 
 

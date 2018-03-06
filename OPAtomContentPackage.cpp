@@ -35,8 +35,9 @@
 #include "config.h"
 #endif
 
-#include <libMXF++/MXFException.h>
 
+#include <libMXF++/MXFException.h>
+#include <mxf/mxf_logging.h>
 #include "OPAtomContentPackage.h"
 
 using namespace std;
@@ -94,6 +95,7 @@ uint32_t OPAtomContentPackage::GetEssenceDataSize(uint32_t mp_track_id) const
 
 const OPAtomContentElement *OPAtomContentPackage::GetEssenceDataI(size_t index) const
 {
+
     MXFPP_ASSERT(index < mEssenceDataVector.size());
 
     return mEssenceDataVector[index];
