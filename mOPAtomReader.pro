@@ -5,9 +5,7 @@ QT       -= gui
 QT       -= core
 #TEMPLATE = app
 TEMPLATE = lib
-CONFIG += staticlib #static -to build the .lib File!!
-#CONFIG += DLL
-
+CONFIG += staticlib #static
 
 CONFIG += plugin
 CONFIG += dll
@@ -16,7 +14,6 @@ INCLUDEPATH += .
 CONFIG -= QtCore
 CONFIG -= app_bundle
 CONFIG   += console
-
 CONFIG += c++11
 DEPENDPATH += . \
     Common
@@ -27,34 +24,21 @@ INCLUDEPATH += .
 
 win32{
     TARGET = mOPAtomreader
-    INCLUDEPATH += "C:/bmx_build/msvc_build/libMXF/include"
     INCLUDEPATH += "C:/bmx_build/msvc_build/libMXF++/include"
+    INCLUDEPATH += "C:/bmx_build/msvc_build/libMXF/include"
 
-    CONFIG(debug, debug|release) {
-        #DESTDIR = ../../../bin/debug
-        #OBJECTS_DIR = ./debug
-        LIBS += "C:\bmx_build\msvc_build\libMXF\debug\lib/libMXF.lib"
-        LIBS +=  "C:\bmx_build\msvc_build\libMXF++\debug\lib/libMXF++.lib"
-        LIBS += "C:\bmx_build\msvc_build\expat\release\lib/libexpat.lib"
-        LIBS += "C:\bmx_build\msvc_build\uriparser\debug\lib/uriparser.lib"
-    }
-    else {
-        #DESTDIR = ../../../bin/release
-        #OBJECTS_DIR = ./release
-        LIBS += "C:\bmx_build\msvc_build\libMXF\release\lib/libMXF.lib"
-        LIBS +=  "C:\bmx_build\msvc_build\libMXF++\release\lib/libMXF++.lib"
-        LIBS += "C:\bmx_build\msvc_build\expat\release\lib/libexpat.lib"
-        LIBS += "C:\bmx_build\msvc_build\uriparser\release\lib/uriparser.lib"
-    }
+    LIBS += "C:\bmx_build\msvc_build\libMXF\debug\lib/libMXF.lib"
+    LIBS +=  "C:\bmx_build\msvc_build\libMXF++\debug\lib/libMXF++.lib"
+    #LIBS += "C:\bmx_build\msvc_build\expat\debug\lib/libexpat.dll"
+    #LIBS += "C:\bmx_build\msvc_build\uriparser\debug\lib/uriparser.lib"
 
     DEFINES += _USING_V110_SDK71_
 
     INCLUDEPATH += "C:/Program Files/Microsoft SDKs/Windows/v7.1A/include"
     LIBS += -lole32
-    LIBS += "C:/Program Files/Microsoft SDKs/Windows/v7.1A/Lib/Mfplat.lib"
-    LIBS += "C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib\mfreadwrite.lib"
-    LIBS += "C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib\mfuuid.lib"
-    LIBS += "C:/Program Files/Microsoft SDKs/Windows/v7.1A/Lib/Propsys.lib"
+    #LIBS += "C:/Program Files/Microsoft SDKs/Windows/v7.1A/Lib/Mfplat.lib"
+    #LIBS += "C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib\mfreadwrite.lib"
+    #LIBS += "C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib\mfuuid.lib"
 
 }
 
@@ -68,6 +52,7 @@ TARGET = /usr/local/lib/mOPAtomreader
                 /usr/local/include/libMXF-1.0
 
     LIBS += -L/usr/local/lib
+     #LIBS += -L/usr/local/lib_s
     #LIBS += /usr/local/lib/libMXF++/libMXF++-1.0.la
 
     LIBS += -lMXF-1.0 \
