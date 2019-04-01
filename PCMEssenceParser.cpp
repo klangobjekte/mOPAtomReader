@@ -82,11 +82,11 @@ PCMEssenceParser::PCMEssenceParser(File *file, int64_t essence_length,
     if (!sound_descriptor->haveChannelCount())
         throw MXFException("Sound descriptor does not specify channel count");
 
-    cout << "mBytesPerSample " << sound_descriptor->getChannelCount() << endl;
+    cout << "sound_descriptor->getChannelCount() " << sound_descriptor->getChannelCount() << endl;
 
 
     mBytesPerSample = sound_descriptor->getChannelCount() * ((sound_descriptor->getQuantizationBits() + 7) / 8);
-    cout << "mBytesPerSample " << mBytesPerSample << endl;
+    cout << " mBytesPerSample " << mBytesPerSample << endl;
 
     if (edit_rate.numerator == 25 && edit_rate.denominator == 1) {
         mSequenceLen = 1;

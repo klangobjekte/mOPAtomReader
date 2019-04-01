@@ -57,3 +57,5 @@ cp -f $SOURCEPATH/Common/CommonTypes.h /usr/local/include/mOPAtomReader/Common/
 
 echo "cp -f $SOURCEPATH/Common/DynamicByteArray.h /usr/local/include/mOPAtomReader/Common/"
 cp -f $SOURCEPATH/Common/DynamicByteArray.h /usr/local/include/mOPAtomReader/Common/
+
+install_name_tool -id /usr/local/lib/libmOPAtomReader.dylib /usr/local/lib/libmOPAtomReader.dylib

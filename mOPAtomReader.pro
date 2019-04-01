@@ -5,7 +5,7 @@ QT       -= gui
 QT       -= core
 #TEMPLATE = app
 TEMPLATE = lib
-CONFIG += staticlib #static
+#CONFIG += staticlib #static
 
 CONFIG += plugin
 CONFIG += dll
@@ -23,7 +23,7 @@ DEPENDPATH += . \
 INCLUDEPATH += .
 
 win32{
-    TARGET = mOPAtomreader
+    TARGET = mOPAtomReader
     INCLUDEPATH += "C:/bmx_build/msvc_build/libMXF++/include"
     INCLUDEPATH += "C:/bmx_build/msvc_build/libMXF/include"
 
@@ -43,7 +43,7 @@ win32{
 }
 
 macx{
-TARGET = /usr/local/lib/mOPAtomreader
+TARGET = /usr/local/lib/mOPAtomReader
     #CONFIG += plugin
     #CONFIG += macx-xcode
     INCLUDEPATH += .\
