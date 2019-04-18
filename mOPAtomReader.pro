@@ -19,7 +19,6 @@ DEPENDPATH += . \
     Common
 
 #DEFINES = __STDC_CONSTANT_MACROS
-
 INCLUDEPATH += .
 
 win32{
