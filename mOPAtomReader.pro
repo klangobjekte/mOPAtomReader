@@ -26,11 +26,14 @@ win32{
     TARGET = mOPAtomReader
     INCLUDEPATH += "C:/bmx_build/msvc_build/libMXF++/include"
     INCLUDEPATH += "C:/bmx_build/msvc_build/libMXF/include"
+    CONFIG(debug, debug|release) {
+        LIBS += "C:\bmx_build\msvc_build\libMXF\debug\lib/libMXF.lib"
+        LIBS +=  "C:\bmx_build\msvc_build\libMXF++\debug\lib/libMXF++.lib"
+    } else {
+         LIBS += "C:\bmx_build\msvc_build\libMXF\release\lib/libMXF.lib"
+         LIBS +=  "C:\bmx_build\msvc_build\libMXF++\release\lib/libMXF++.lib"
+    }
 
-    LIBS += "C:\bmx_build\msvc_build\libMXF\debug\lib/libMXF.lib"
-    LIBS +=  "C:\bmx_build\msvc_build\libMXF++\debug\lib/libMXF++.lib"
-    #LIBS += "C:\bmx_build\msvc_build\expat\debug\lib/libexpat.dll"
-    #LIBS += "C:\bmx_build\msvc_build\uriparser\debug\lib/uriparser.lib"
 
     DEFINES += _USING_V110_SDK71_
 
@@ -39,6 +42,8 @@ win32{
     #LIBS += "C:/Program Files/Microsoft SDKs/Windows/v7.1A/Lib/Mfplat.lib"
     #LIBS += "C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib\mfreadwrite.lib"
     #LIBS += "C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib\mfuuid.lib"
+
+
 
 }
 
