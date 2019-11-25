@@ -42,7 +42,7 @@ using namespace std;
 //typedef std::string  psnd_string;
 #endif
 
-
+/*
 class Timecode
 {
 public:
@@ -77,7 +77,7 @@ public:
     int frame;
     bool dropFrame;
 };
-
+*/
 
 const mxfRational g_4by3AspectRatio = {4, 3};
 const mxfRational g_16by9AspectRatio = {16, 9};
