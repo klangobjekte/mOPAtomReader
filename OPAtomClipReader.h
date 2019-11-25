@@ -43,7 +43,7 @@
 class OPAtomClipReader
 {
 public:
-    static std::pair<OPAtomOpenResult, string> Open(const vector<string> &track_filenames,
+    static std::pair<OPAtomOpenResult, std::string> Open(const std::vector<std::string> &track_filenames,
                                                          OPAtomClipReader **clip_reader);
     static std::string ErrorToString(OPAtomOpenResult result);
 

@@ -32,10 +32,14 @@
 #ifndef __COMMON_TYPES_H__
 #define __COMMON_TYPES_H__
 
+//#ifdef __cplusplus
+//extern "C"
+//{
+//#endif
 
 #include <mxf/mxf_types.h>
-#include <string>
-using namespace std;
+//#include <string>
+//using namespace std;
 #ifdef _WIN32
 //typedef std::wstring  psnd_string;
 #else
@@ -82,6 +86,9 @@ public:
 const mxfRational g_4by3AspectRatio = {4, 3};
 const mxfRational g_16by9AspectRatio = {16, 9};
 
+//#ifdef __cplusplus
+//}
+//#endif
 
 #endif
 
