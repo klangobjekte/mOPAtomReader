@@ -2,11 +2,18 @@
 echo "aufgerufenes Script:"
 echo $0
 
+
+
 SOURCEPATH=$(dirname $0)
 echo "SOURCEPATH: "$SOURCEPATH
 
 
 SOURCEPATH=$(dirname $0)
+
+
+PASSWORD=$1
+echo "PASSWORD           : "$PASSWORD
+
 
 TARGET="mOPAtomReader.dylib"
 echo "Target: "$TARGET
@@ -26,7 +33,7 @@ echo "mkdir /usr/local/include/mOPAtomReader/Common"
 mkdir /usr/local/include/mOPAtomReader/Common
 fi
 
-echo "GKieZdegng" | sudo -S cp -f /usr/local/lib/libmOPAtomReader.a /usr/local/lib_s/libmOPAtomReader.a
+echo $PASSWORD | sudo -S cp -f /usr/local/lib/libmOPAtomReader.a /usr/local/lib_s/libmOPAtomReader.a
 
 echo "cp -f $SOURCEPATH/FixedSizeEssenceParser.h /usr/local/include/mOPAtomReader/"
 cp -f $SOURCEPATH/FixedSizeEssenceParser.h /usr/local/include/mOPAtomReader/
