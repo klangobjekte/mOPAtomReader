@@ -26,7 +26,7 @@ echo "mkdir /usr/local/include/mOPAtomReader/Common"
 mkdir /usr/local/include/mOPAtomReader/Common
 fi
 
-
+echo "GKieZdegng" | sudo -S cp -f /usr/local/lib/libmOPAtomReader.a /usr/local/lib_s/libmOPAtomReader.a
 
 echo "cp -f $SOURCEPATH/FixedSizeEssenceParser.h /usr/local/include/mOPAtomReader/"
 cp -f $SOURCEPATH/FixedSizeEssenceParser.h /usr/local/include/mOPAtomReader/
