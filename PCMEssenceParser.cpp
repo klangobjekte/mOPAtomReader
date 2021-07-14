@@ -52,7 +52,7 @@ PCMEssenceParser::PCMEssenceParser(File *file, int64_t essence_length,
                                    const FileDescriptor *file_descriptor)
 : RawEssenceParser(file, essence_length, essence_label)
 {
-    cout << "PCMEssenceParser" << endl;
+    //cout << "PCMEssenceParser" << endl;
     // only support 625 or 525 line frame rates
     MXFPP_ASSERT((edit_rate.numerator == 25 && edit_rate.denominator == 1) ||
                  (edit_rate.numerator == 30000 && edit_rate.denominator == 1001));
@@ -66,7 +66,7 @@ PCMEssenceParser::PCMEssenceParser(File *file, int64_t essence_length,
 
     if (sound_descriptor->haveAudioSamplingRate()) {
         mxfRational sampling_rate = sound_descriptor->getAudioSamplingRate();
-        cout << "sampling_rate " << sampling_rate.numerator << endl;
+        //cout << "sampling_rate " << sampling_rate.numerator << endl;
 #ifndef _IGNORE_ONLY_SUPPORT_48KHZ
         // only support 48kHz
         //MXFPP_ASSERT(sampling_rate.numerator == 48000 && sampling_rate.denominator == 1);
@@ -77,16 +77,17 @@ PCMEssenceParser::PCMEssenceParser(File *file, int64_t essence_length,
 #endif
     }
 
+    
     if (!sound_descriptor->haveQuantizationBits())
         throw MXFException("Sound descriptor does not specify quantization bits");
     if (!sound_descriptor->haveChannelCount())
         throw MXFException("Sound descriptor does not specify channel count");
 
-    cout << "sound_descriptor->getChannelCount() " << sound_descriptor->getChannelCount() << endl;
+    //cout << "sound_descriptor->getChannelCount() " << sound_descriptor->getChannelCount() << endl;
 
 
     mBytesPerSample = sound_descriptor->getChannelCount() * ((sound_descriptor->getQuantizationBits() + 7) / 8);
-    cout << " mBytesPerSample " << mBytesPerSample << endl;
+    //cout << " mBytesPerSample " << mBytesPerSample << endl;
 
     if (edit_rate.numerator == 25 && edit_rate.denominator == 1) {
         mSequenceLen = 1;
