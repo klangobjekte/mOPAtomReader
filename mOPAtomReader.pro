@@ -5,21 +5,58 @@ QT       -= gui
 QT       -= core
 #TEMPLATE = app
 TEMPLATE = lib
-#CONFIG += staticlib #static
 
-CONFIG += plugin
+#CONFIG += static
+
+
+#CONFIG += plugin
 CONFIG += dll
+#CONFIG += staticlib
 
 INCLUDEPATH += .
 CONFIG -= QtCore
 CONFIG -= app_bundle
 CONFIG   += console
-CONFIG += c++11
+#CONFIG += c++11
+CONFIG += c++17
+#QMAKE_CXXFLAGS += -std=c++17
+#QMAKE_CXXFLAGS += D_HAS_AUTO_PTR_ETC
+#QMAKE_CXXFLAGS += _LIBCPP_ENABLE_CXX17_REMOVED_FEATURES
 DEPENDPATH += . \
     Common
 
 #DEFINES = __STDC_CONSTANT_MACROS
 INCLUDEPATH += .
+
+macx{
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 11.0
+    #TARGET = /usr/local/lib/mOPAtomReader
+    TARGET = mOPAtomReader
+    #CONFIG += plugin
+    #CONFIG += macx-xcode
+    INCLUDEPATH += .\
+                /usr/local/include \
+                /usr/local/include/libMXF++-1.0 \
+                /usr/local/include/libMXF-1.0 \
+                /opt/homebrew/include
+
+    #LIBS += -L/usr/local/lib
+    #LIBS += -L/opt/homebrew/lib
+    LIBS += -L/usr/local/lib_s
+    #LIBS += /usr/local/lib_s/libMXF-1.0.a
+    #LIBS += /usr/local/lib_s/libMXF++-1.0.a
+    LIBS += -lMXF-1.0 \
+            -lMXF++-1.0
+            #-lbmx-0.1 \
+            #-lopatomreader-1.0 \
+            #-ld10mxfop1awriter-1.0 \
+            #-lexpat \
+            #-luriparser \
+            #-lavidmxfinfo-1.0 \
+            #-lwritearchivemxf-1.0 \
+            #-lmxfreader-1.0 \
+            #-lwriteavidmxf-1.0 \
+}
 
 win32{
     TARGET = mOPAtomReader
@@ -44,33 +81,6 @@ win32{
 
 
 
-}
-
-macx{
-TARGET = /usr/local/lib/mOPAtomReader
-    #CONFIG += plugin
-    #CONFIG += macx-xcode
-    INCLUDEPATH += .\
-                /usr/local/include \
-                /usr/local/include/libMXF++-1.0/ \
-                /usr/local/include/libMXF-1.0
-
-    LIBS += -L/usr/local/lib
-     #LIBS += -L/usr/local/lib_s
-    #LIBS += /usr/local/lib/libMXF++/libMXF++-1.0.la
-
-    LIBS += -lMXF-1.0 \
-            -lMXF++-1.0
-            #-lbmx-0.1 \
-            #-lopatomreader-1.0 \
-            #-ld10mxfop1awriter-1.0 \
-
-            #-lexpat \
-            #-luriparser \
-            #-lavidmxfinfo-1.0 \
-            #-lwritearchivemxf-1.0 \
-            #-lmxfreader-1.0 \
-            #-lwriteavidmxf-1.0 \
 }
 
 #include(deployment.pri)
