@@ -29,7 +29,7 @@ DEPENDPATH += . \
 INCLUDEPATH += .
 
 macx{
-    QMAKE_MACOSX_DEPLOYMENT_TARGET = 11.0
+    #QMAKE_MACOSX_DEPLOYMENT_TARGET = 11.0
     #TARGET = /usr/local/lib/mOPAtomReader
     TARGET = mOPAtomReader
     #CONFIG += plugin
